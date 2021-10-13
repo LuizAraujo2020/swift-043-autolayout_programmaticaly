@@ -27,8 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = GalleryController()
         // Finally, you made the window the key window and also made it visible.
         window?.makeKeyAndVisible()
-
-
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

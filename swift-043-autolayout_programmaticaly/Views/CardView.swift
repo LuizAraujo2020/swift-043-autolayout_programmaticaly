@@ -33,30 +33,36 @@ final class CardView: UIView {
   
   private lazy var imageView: UIImageView = {
     let image = UIImageView()
+      
     image.contentMode = .scaleAspectFit
     image.clipsToBounds = true
     image.backgroundColor = .white
     image.layer.cornerRadius = 8
     image.translatesAutoresizingMaskIntoConstraints = false
+      
     return image
   }()
   
   private lazy var textLabel: UILabel = {
     let label = UILabel()
+      
     label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
     label.textAlignment = .center
     label.translatesAutoresizingMaskIntoConstraints = false
+      
     return label
   }()
   
   private override init(frame: CGRect) {
     super.init(frame: frame)
+      
     setupViews()
     setupConstraints()
   }
   
   public convenience init(with type: CardType) {
     self.init(frame: .zero)
+      
     configureCard(with: type)
   }
   
@@ -67,7 +73,6 @@ final class CardView: UIView {
   private func setupViews() {
     //add code here to add views to hierarchy
       addSubviews(imageView, textLabel)
-
   }
   
   private func setupConstraints() {
@@ -75,27 +80,16 @@ final class CardView: UIView {
       //This tells the imageView where its top, left and right sides should be positioned in relation to the parent view (referred to by self here).
       NSLayoutConstraint.activate([
         imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
-        imageView.leadingAnchor.constraint(
-          equalTo: self.leadingAnchor,
-          constant: padding),
-        imageView.trailingAnchor.constraint(
-          equalTo: self.trailingAnchor,
-          constant: -padding)
-      ])
-      
-      NSLayoutConstraint.activate([
+        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
+        imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+
+        
         // Then you give textLabel a topAnchor that is constrained relative to the bottom of imageView — wherever the botto
-        textLabel.topAnchor.constraint(
-            equalTo: imageView.bottomAnchor,
-            constant: padding),
+        textLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: padding),
         // You then add leadingAnchor, trailingAnchor and bottomAnchor constraints, telling the textLabel where its left, right and bottom sides should be positioned, relative to the parent view.
         textLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
-        textLabel.trailingAnchor.constraint(
-          equalTo: self.trailingAnchor,
-          constant: -padding),
-        textLabel.bottomAnchor.constraint(
-          equalTo: self.bottomAnchor,
-          constant: -padding)
+        textLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+        textLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding)
       ])
       
       // Hugging means something like size to fit. A higher value of Content Hugging will make the label stick to its original bounds and not expand.
@@ -103,15 +97,15 @@ final class CardView: UIView {
       // Compression Resistance means the label will resist compressing.
       //A higher value of Compression Resistance will prevent the label from compressing or shrinking with respect to other views.
       textLabel.setContentCompressionResistancePriority(.defaultHigh + 1, for: .vertical)
-
   }
-  
 }
 
 // MARK: - View Configuration
 extension CardView {
   public func configureCard(with type: CardType) {
+      
     let model = CardModel.getCardDetails(for: type)
+      
     imageView.image = UIImage(named: model.imageName)
     textLabel.text = model.characterName
     backgroundColor = model.backgroundColor

@@ -31,32 +31,42 @@ import UIKit
 class GalleryController: UIViewController {
   lazy var cardView1: CardView = {
     let cardView = CardView(with: .skeleton)
+      
     cardView.translatesAutoresizingMaskIntoConstraints = false
+      
     return cardView
   }()
   
   lazy var cardView2: CardView = {
     let cardView = CardView(with: .owl)
+      
     cardView.translatesAutoresizingMaskIntoConstraints = false
+      
     return cardView
   }()
   
   lazy var cardView3: CardView = {
     let cardView = CardView(with: .panda)
+      
     cardView.translatesAutoresizingMaskIntoConstraints = false
+      
     return cardView
   }()
   
   lazy var cardView4: CardView = {
     let cardView = CardView(with: .monkey)
+      
     cardView.translatesAutoresizingMaskIntoConstraints = false
+      
     return cardView
   }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
+      
     setupViews()
     setupConstraints()
+      
     view.backgroundColor = .white
   }
   
@@ -67,17 +77,6 @@ class GalleryController: UIViewController {
   
   // MARK: - Setting Constraints
   private func setupConstraints() {
-      /*
-      // You added a call to NSLayoutConstraint to activate an array of constraints. The array contains:
-      NSLayoutConstraint.activate([
-        // centerX and centerY constraint anchors to make sure the card is laid out in the exact horizontal and vertical center of the view.
-        cardView1.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        cardView1.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        // width and height constraint anchors to fix the width and height of the card.
-        cardView1.widthAnchor.constraint(equalToConstant: 120),
-        cardView1.heightAnchor.constraint(equalToConstant: 200)
-      ])
-       */
       let safeArea = view.safeAreaLayoutGuide
 
       NSLayoutConstraint.activate([
@@ -104,7 +103,5 @@ class GalleryController: UIViewController {
         cardView4.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.5),
         cardView4.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
       ])
-
-
   }
 }
