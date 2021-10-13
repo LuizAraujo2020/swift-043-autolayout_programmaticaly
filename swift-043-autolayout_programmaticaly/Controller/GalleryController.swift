@@ -62,11 +62,12 @@ class GalleryController: UIViewController {
   
   // MARK: - Setting Views
   private func setupViews() {
-    view.addSubviews(cardView1)
+      view.addSubviews(cardView1, cardView2, cardView3, cardView4)
   }
   
   // MARK: - Setting Constraints
   private func setupConstraints() {
+      /*
       // You added a call to NSLayoutConstraint to activate an array of constraints. The array contains:
       NSLayoutConstraint.activate([
         // centerX and centerY constraint anchors to make sure the card is laid out in the exact horizontal and vertical center of the view.
@@ -76,5 +77,34 @@ class GalleryController: UIViewController {
         cardView1.widthAnchor.constraint(equalToConstant: 120),
         cardView1.heightAnchor.constraint(equalToConstant: 200)
       ])
+       */
+      let safeArea = view.safeAreaLayoutGuide
+
+      NSLayoutConstraint.activate([
+        cardView1.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+        cardView1.topAnchor.constraint(equalTo: safeArea.topAnchor),
+        cardView1.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.5),
+        cardView1.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.5),
+
+        cardView2.leadingAnchor.constraint(equalTo: cardView1.trailingAnchor),
+        cardView2.topAnchor.constraint(equalTo: safeArea.topAnchor),
+        cardView2.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.5),
+        cardView2.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.5),
+        cardView2.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+
+        cardView3.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+        cardView3.topAnchor.constraint(equalTo: cardView1.bottomAnchor),
+        cardView3.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.5),
+        cardView3.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.5),
+        cardView3.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+
+        cardView4.leadingAnchor.constraint(equalTo: cardView3.trailingAnchor),
+        cardView4.topAnchor.constraint(equalTo: cardView2.bottomAnchor),
+        cardView4.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.5),
+        cardView4.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.5),
+        cardView4.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+      ])
+
+
   }
 }
